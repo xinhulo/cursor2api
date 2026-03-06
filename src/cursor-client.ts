@@ -31,7 +31,7 @@ function getChromeHeaders(): Record<string, string> {
         'sec-fetch-site': 'same-origin',
         'sec-fetch-mode': 'cors',
         'sec-fetch-dest': 'empty',
-        'referer': 'https://cursor.com/en-US/docs',
+        'referer': 'https://cursor.com/',
         'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
         'priority': 'u=1, i',
         'user-agent': config.fingerprint.userAgent,
