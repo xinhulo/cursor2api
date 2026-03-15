@@ -115,6 +115,7 @@ export interface AppConfig {
     timeout: number;
     proxy?: string;
     cursorModel: string;
+    appKey?: string;
     enableThinking?: boolean;
     /** AI 摘要压缩：用额外 API 调用对旧消息进行摘要压缩（质量不稳定，默认关闭） */
     enableSummary?: boolean;
