@@ -42,7 +42,7 @@ app.use((req, res, next) => {
   }
 
   // 没配置 appKey 就不启用鉴权
-  if (!config.appKey) {
+  if (!config.serviceApiKey) {
     return next();
   }
 
@@ -61,10 +61,10 @@ app.use((req, res, next) => {
     providedKey = xApiKey.trim();
   }
 
-  if (providedKey !== config.appKey) {
+  if (providedKey !== config.serviceApiKey) {
     return res.status(401).json({
       error: {
-        message: 'Unauthorized: invalid or missing app_key',
+        message: 'Unauthorized: invalid or missing api_key',
         type: 'authentication_error',
       },
     });
