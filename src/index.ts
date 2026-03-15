@@ -35,6 +35,44 @@ app.use((_req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => {
+  // 放行健康检查和首页
+  if (req.path === '/health' || req.path === '/') {
+    return next();
+  }
+
+  // 没配置 appKey 就不启用鉴权
+  if (!config.appKey) {
+    return next();
+  }
+
+  const authHeader = req.header('authorization');
+  const xApiKey = req.header('x-api-key');
+
+  let providedKey = '';
+
+  // 兼容 Authorization: Bearer xxx
+  if (authHeader?.startsWith('Bearer ')) {
+    providedKey = authHeader.slice(7).trim();
+  }
+
+  // 兼容 x-api-key: xxx
+  if (!providedKey && xApiKey) {
+    providedKey = xApiKey.trim();
+  }
+
+  if (providedKey !== config.appKey) {
+    return res.status(401).json({
+      error: {
+        message: 'Unauthorized: invalid or missing app_key',
+        type: 'authentication_error',
+      },
+    });
+  }
+
+  next();
+});
+
 // ==================== 路由 ====================
 
 // Anthropic Messages API
