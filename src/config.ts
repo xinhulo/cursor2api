@@ -28,6 +28,7 @@ export function getConfig(): AppConfig {
             if (yaml.timeout) config.timeout = yaml.timeout;
             if (yaml.proxy) config.proxy = yaml.proxy;
             if (yaml.cursor_model) config.cursorModel = yaml.cursor_model;
+            if (yaml.app_key) config.appKey = yaml.app_key;
             if (yaml.enable_thinking !== undefined) config.enableThinking = yaml.enable_thinking;
             if (yaml.enable_summary !== undefined) config.enableSummary = yaml.enable_summary;
             if (yaml.enable_progressive_truncation !== undefined) config.enableProgressiveTruncation = yaml.enable_progressive_truncation;
@@ -74,6 +75,7 @@ export function getConfig(): AppConfig {
     if (process.env.TIMEOUT) config.timeout = parseInt(process.env.TIMEOUT);
     if (process.env.PROXY) config.proxy = process.env.PROXY;
     if (process.env.CURSOR_MODEL) config.cursorModel = process.env.CURSOR_MODEL;
+    if (process.env.APP_KEY) config.appKey = process.env.APP_KEY;
     if (process.env.ENABLE_THINKING !== undefined) config.enableThinking = process.env.ENABLE_THINKING !== 'false';
     if (process.env.ENABLE_SUMMARY !== undefined) config.enableSummary = process.env.ENABLE_SUMMARY === 'true';
     if (process.env.ENABLE_PROGRESSIVE_TRUNCATION !== undefined) config.enableProgressiveTruncation = process.env.ENABLE_PROGRESSIVE_TRUNCATION !== 'false';
