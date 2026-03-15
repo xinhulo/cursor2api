@@ -12,6 +12,8 @@ timeout: 120
 # 支持 http 代理，含认证格式: http://用户名:密码@代理地址:端口
 # proxy: "http://127.0.0.1:7890"
 
+app_key: "my-super-secret-key"
+
 # Cursor 使用的模型
 cursor_model: "anthropic/claude-sonnet-4.6"
 
