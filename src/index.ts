@@ -37,9 +37,9 @@ app.use((_req, res, next) => {
 
 app.use((req, res, next) => {
   // 放行健康检查和首页
-  if (req.path === '/health' || req.path === '/') {
-    return next();
-  }
+  //if (req.path === '/health' || req.path === '/') {
+  //  return next();
+  //}
 
   // 没配置 appKey 就不启用鉴权
   if (!config.serviceApiKey) {
